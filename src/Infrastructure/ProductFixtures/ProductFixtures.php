@@ -19,6 +19,7 @@ final class  ProductFixtures extends Fixture
      */
     public function load(ObjectManager $manager): void
     {
+        //Uncomment to reduce the number of fixtures
         /*
         $json = <<<'JSON'
 {
@@ -76,7 +77,7 @@ JSON;
                 CategoryEnum::AVAILABLE_CATEGORIES[array_rand(CategoryEnum::AVAILABLE_CATEGORIES)],
                 random_int(10000, 99999)
             );
-            $product->setId(Uuid::v4()->toRfc4122());
+            $product->setId(new UuidValueObject(Uuid::v4()->toRfc4122()));
             $manager->persist($product);
         }
 

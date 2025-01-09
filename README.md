@@ -17,8 +17,8 @@ Test are a must. Code must be testable without requiring networking or the files
 - `make tests` to run the test suite.
 
 ### Endpoints:
-- Api platform Docs: [/api/doc](http://localhost/api/v1/docs)
-- Products Docs: [/products](http://localhost/api/v1/products)
+- Api platform Docs: [/api/doc](http://localhost/api/doc)
+- Products Docs: [/products](http://localhost/products)
 
 ### Stack:
 - `NGINX 1.19` container

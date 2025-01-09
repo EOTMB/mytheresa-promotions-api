@@ -1,0 +1,72 @@
+nelmio_api_doc:
+    documentation:
+        exclude:
+
+        info:
+            title: "Mytheresa Promotions Api"
+            description: "API documentation"
+            version: "1.0.0"
+
+        paths:
+            # You can specify paths to include or exclude
+            /products:
+                get:
+                    summary: "Get products"
+                    description: "Returns a list of products, optionally filtered by category or max prize"
+                    parameters:
+                        - name: "category"
+                          in: "query"
+                          description: "Category name"
+                          required: false
+                          schema:
+                              type: "string"
+                              default: "boots"
+                        - name: "priceLessThan"
+                          in: "query"
+                          description: "The maximum price of the products searched, multiplied by a factor of 100"
+                          required: false
+                          schema:
+                              type: "integer"
+                              default: 50000
+                    responses:
+                        200:
+                            description: "List of products"
+                            content:
+                                application/json:
+                                    schema:
+                                        type: array
+                                        items:
+                                            type: object
+                                            properties:
+                                                sku:
+                                                    type: string
+                                                    description: "Stock Keeping Unit identifier for the product"
+                                                category:
+                                                    type: string
+                                                    description: "Category of the product"
+                                                name:
+                                                    type: string
+                                                    description: "Name of the product"
+                                                price:
+                                                    type: object
+                                                    properties:
+                                                        original:
+                                                            type: number
+                                                            format: integer
+                                                            description: "Original price of the product"
+                                                        final:
+                                                            type: number
+                                                            format: integer
+                                                            description: "Final price of the product after any discounts"
+                                                        discount_percentage:
+                                                            type: number
+                                                            format: integer
+                                                            description: "Discount percentage applied to the product"
+                                                        currency:
+                                                            type: string
+                                                            description: "Currency of the price (EUR)"
+
+    areas:
+        default:
+            path_patterns:
+                - ^/products

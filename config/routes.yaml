@@ -1,0 +1,4 @@
+products:
+  path: /products
+  methods: [GET]
+  defaults: { _controller: App\Infrastructure\Controller\GetProducts }

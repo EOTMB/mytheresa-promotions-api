@@ -1,0 +1,23 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    _instanceof:
+        App\Domain\Specification\ProductDiscountSpecification:
+            tags: [ 'app.product_specification' ]
+
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
+    App\Infrastructure\:
+        resource: '../src/Infrastructure'
+        tags: [ 'controller.service_arguments' ]
+
+
+
+    App\Domain\Service\DiscountCalculator:
+        arguments:
+            - !tagged_iterator app.product_specification

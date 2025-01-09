@@ -1,0 +1,57 @@
+version: '3.5'
+
+services:
+
+  api:
+    container_name: api
+    build:
+      context: ./docker/nginx
+      args:
+        UID: $U_ID
+    ports:
+      - 80:80
+    volumes:
+      - ./public:/appdata/www/public
+    depends_on:
+      - php
+    networks:
+      - api-network
+
+  php:
+    container_name: php
+    build:
+      context: docker/php
+      args:
+        UID: $U_ID
+    volumes:
+      - ./:/appdata/www
+      - ~/.ssh/id_rsa:/home/appuser/.ssh/id_rsa
+    depends_on:
+      - db
+    networks:
+      - api-network
+
+  db:
+    container_name: db
+    build:
+      context: ./docker/database
+      args:
+        UID: $U_ID
+    ports:
+      - 3350:3306
+    environment:
+      MYSQL_DATABASE: database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root
+    command: mysqld --sql_mode="STRICT_ALL_TABLES,NO_ENGINE_SUBSTITUTION"
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - api-network
+
+volumes:
+  db-data:
+
+networks:
+  api-network:

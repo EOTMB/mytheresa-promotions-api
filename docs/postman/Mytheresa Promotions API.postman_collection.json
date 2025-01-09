@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "00ad2f12-7de3-445d-8182-02ac1c92165f",
+		"name": "Mytheresa Promotions API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Products",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost/api/v1/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "62f74dbe-a64e-4f8c-81e5-f4dd1eb9b812",
+									"disabled": true
+								},
+								{
+									"key": "sku",
+									"value": "000003",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "BV Lean leather ankle boots",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "sandals",
+									"disabled": true
+								},
+								{
+									"key": "operator",
+									"value": "<",
+									"description": "EQUAL = '=', NOT_EQUAL = '!=', GT = '>', LT = '<', CONTAINS = 'CONTAINS',NOT_CONTAINS = 'NOT_CONTAINS' ",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "order",
+									"value": "desc",
+									"disabled": true
+								},
+								{
+									"key": "order_by",
+									"value": "price",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creator",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"sku\": \"000001\",\n  \"name\": \"BV Lean leather ankle boots\",\n  \"category\": \"sandals\",\n  \"price\": 14000\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1/api/v1/products/create",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

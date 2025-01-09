@@ -1,0 +1,5 @@
+services:
+  App\Domain\Service\DiscountCalculator:
+    public: true
+    arguments:
+      - !tagged_iterator app.product_specification
